@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +19,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SeekBar seekBar = findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Toast.makeText(getApplicationContext(),"seekbar progress:", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(getApplicationContext(),"seekbar touch started!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(getApplicationContext(),"seekbar touch stopped!!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -48,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast toast3 = Toast.makeText(this, "visit us abc.com", Toast.LENGTH_SHORT);
                 toast3.show();
                 break;
-
         }
          return true;
 
@@ -60,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this,WelcomeScreen.class);
         intent.putExtra("key",editText.getText().toString());
         startActivity(intent);
-
     }
 
     public void showRatings(View view) {
@@ -68,5 +85,9 @@ public class MainActivity extends AppCompatActivity {
         String rate = String.valueOf(ratingBar.getRating());
         Toast toast = Toast.makeText(this,rate,Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    public void seekMe(View view) {
+
     }
 }
