@@ -1,5 +1,6 @@
 package com.example.knight.dotmenucheck;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -89,5 +90,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void seekMe(View view) {
 
+    }
+
+    public void showCutom(View view) {
+        Dialog dialog = new Dialog(MainActivity.this);
+        //set the layout for reqied layout
+        dialog.setContentView(R.layout.cusmenu);
+        dialog.show();
     }
 }
